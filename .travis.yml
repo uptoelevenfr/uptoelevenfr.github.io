@@ -25,6 +25,7 @@ script:
   - bundle exec rake generate
 after_script:
   # Deploy!
+  - git branch
   - bundle exec rake deploy
 env:
   global:
