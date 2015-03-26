@@ -20,12 +20,12 @@ before_script:
   - bundle exec rake setup_github_pages[$REPO]
   # To reset the 'url' to the custom domain in '_config.yml'
   - git checkout -- _config.yml
+  - git checkout -- Rakefile
 script:
   # Generate site
   - bundle exec rake generate
 after_script:
   # Deploy!
-  - git branch
   - bundle exec rake deploy
 env:
   global:
@@ -55,4 +55,3 @@ env:
     - secure: "Nld/FrsJUgYLqpVJe2nbFB/QwHkUNwH98Jf/zMAF1yVFgmz7kIKD5bf7w0q3eOnhl6UgoYL+WrXPVUSBId9e/n8A2dXAsUMPwLfSUEhK8zC84HIslnd05EYV8bMPKn8NANiVBJrgUQTCv8Xay30NZ4lv4IyPuyvFZkl6sqkmi8o="
     - secure: "3QDb5s5V3WhwYI0iexlwR1rlPSmutVwmR6Gl8U1nykIWS/TqS8KTh1sXCY9gh2eVh4+Xbh6m+BkOKkGbPFHPw3uzzXKLPgd19ClFCVaiTt7tSBxNKJg0oT34EgZ+8bLdXVWVrERWdd41z8ZibOqGn+EfI4niZ0d9y//k90xZOgU="
     - secure: "F+y+48CFqdj+oGoa76GV2xt678TZQWgCHkf5iek7tZogWJAOWjP2il0gDve5uqygr4XQ24MufPsQEJOtFObLIDmB228gQ/+5tNQoBf7YuxdQhH8r8HM98WiVVH6Q4N9ilnGH3rjax+Y757JAGu4p/XKGD+h3vD9sFEW+FPrEAf8="
-    
