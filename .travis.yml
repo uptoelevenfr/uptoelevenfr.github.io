@@ -1,5 +1,25 @@
+branches:
+  only:
+    - source
 language: ruby
 rvm:
-  - 2.0.0
   - 1.9.3
-script: bundle exec rake install; bundle exec rake generate
+before_script: 
+  # Set the git config stuff, so Git stops yelling at us
+  - git config --global user.name "Ahmet Demir (Travis-CI)"
+  - git config --global user.email "me@ahmet2mir.eu"
+  # Set read-write git origin
+  - git remote set-url origin $REPO.git
+  # Set deployment target to github pages
+  - bundle exec rake setup_github_pages[$REPO]
+script:
+  # Generate site
+  - bundle exec rake generate
+after_script:
+  # Deploy!
+  - bundle exec rake deploy
+env:
+  global:
+    # Repo read-write address
+    - REPO="https://github.com/uptoelevenfr/uptoelevenfr.github.io"
+    
